@@ -3,9 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="8dp">
 
-    <!-- Logo del restaurante -->
     <ImageView
         android:id="@+id/restaurant_logo"
         android:layout_width="100dp"
@@ -13,12 +12,10 @@
         android:layout_gravity="center"
         android:src="@drawable/ic_launcher_background" />
 
-    <!-- Nombre del restaurante -->
     <TextView
         android:id="@+id/restaurant_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Restaurant Name"
         android:textSize="18sp"
         android:textStyle="bold" />
 

@@ -1,5 +1,6 @@
 package com.example.movilesproyectocliente
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -28,7 +29,14 @@ class TokenActivity : AppCompatActivity() {
         // Inicializar el RecyclerView y el adaptador
         recyclerView = findViewById(R.id.recyclerViewRestaurants)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        restaurantAdapter = RestaurantAdapter(emptyList())  // Inicializamos con una lista vacía
+
+        // Configurar el adaptador con la función onClick
+        restaurantAdapter = RestaurantAdapter(emptyList()) { restaurant ->
+            // Acción al hacer clic en un restaurante
+            val intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("restaurantId", restaurant.id) // Pasamos el ID del restaurante a la nueva actividad
+            startActivity(intent)
+        }
         recyclerView.adapter = restaurantAdapter
 
         // Obtener el token
@@ -52,10 +60,10 @@ class TokenActivity : AppCompatActivity() {
     private fun getRestaurants(token: String) {
         apiService = RetrofitClient.getClient().create(ApiService::class.java)
         apiService.getRestaurants("Bearer $token").enqueue(object :
-            Callback<List<ApiService.Restaurant>> {
+            Callback<List<ApiService.RestaurantDetails>> {
             override fun onResponse(
-                call: Call<List<ApiService.Restaurant>>,
-                response: Response<List<ApiService.Restaurant>>
+                call: Call<List<ApiService.RestaurantDetails>>,
+                response: Response<List<ApiService.RestaurantDetails>>
             ) {
                 if (response.isSuccessful) {
                     response.body()?.let {
@@ -66,7 +74,7 @@ class TokenActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<List<ApiService.Restaurant>>, t: Throwable) {
+            override fun onFailure(call: Call<List<ApiService.RestaurantDetails>>, t: Throwable) {
                 Toast.makeText(this@TokenActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
