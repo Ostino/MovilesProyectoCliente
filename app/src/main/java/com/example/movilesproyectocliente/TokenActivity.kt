@@ -25,7 +25,6 @@ class TokenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_token)
-
         // Inicializar el RecyclerView y el adaptador
         recyclerView = findViewById(R.id.recyclerViewRestaurants)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -56,7 +55,10 @@ class TokenActivity : AppCompatActivity() {
             Toast.makeText(this, "Token no disponible", Toast.LENGTH_SHORT).show()
         }
     }
-
+    override fun onResume() {
+        super.onResume()
+        clearSharedPreferences("carrito_prefs")
+    }
     private fun getRestaurants(token: String) {
         apiService = RetrofitClient.getClient().create(ApiService::class.java)
         apiService.getRestaurants("Bearer $token").enqueue(object :
@@ -79,4 +81,9 @@ class TokenActivity : AppCompatActivity() {
             }
         })
     }
+    private fun clearSharedPreferences(prefName: String) {
+        val sharedPreferences = getSharedPreferences(prefName, MODE_PRIVATE)
+        sharedPreferences.edit().clear().apply()
+    }
+
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewProductNameCarrito"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Producto"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonDeleteCarrito"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/textViewProductQtyCarrito"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cantidad: 1"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewProductNameCarrito"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonDeleteCarrito"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/textViewProductPriceCarrito"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Precio: 100"
+        android:textSize="14sp"
+        android:textColor="@android:color/holo_green_dark"
+        app:layout_constraintTop_toBottomOf="@id/textViewProductQtyCarrito"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonDeleteCarrito"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp" />
+
+    <Button
+        android:id="@+id/buttonDeleteCarrito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

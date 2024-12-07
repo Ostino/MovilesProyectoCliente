@@ -17,7 +17,7 @@ interface ApiService {
         val name: String,
         val email: String,
         val password: String,
-        val role: Int = 2 // Role fijo para usuarios cliente
+        val role: Int = 1 // Role fijo para usuarios cliente
     )
 
     data class RestaurantDetails(
@@ -47,6 +47,11 @@ interface ApiService {
         val image: String
     )
 
+    data class Carrito(
+        val id: Int,
+        var qty: Int,
+        val price:String
+    )
 
     @POST("users/login")
     fun login(@Body request: LoginRequest): Call<LoginResponse>

@@ -1,7 +1,9 @@
 package com.example.movilesproyectocliente
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -60,6 +62,13 @@ class MenuActivity : AppCompatActivity() {
             // Usar el token para cargar el menú del restaurante
             loadRestaurantMenu(token, restaurantId)
         }
+
+        // Agregar el botón para ver el carrito
+        val viewCartButton = findViewById<Button>(R.id.buttonViewCarrito)
+        viewCartButton.setOnClickListener {
+            val intent = Intent(this, CarritoActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun loadRestaurantMenu(token: String, restaurantId: Int) {
@@ -90,3 +99,4 @@ class MenuActivity : AppCompatActivity() {
         })
     }
 }
+
