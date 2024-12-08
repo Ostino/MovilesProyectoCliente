@@ -28,6 +28,7 @@ class MenuActivity : AppCompatActivity() {
 
         // Obtén el restaurantId desde el Intent (por ejemplo, al hacer clic en un restaurante)
         val restaurantId = intent.getIntExtra("restaurantId", -1)
+        val address = intent.getStringExtra("address")
 
         if (restaurantId == -1) {
             // Si no se pasó el ID del restaurante, muestra un error
@@ -67,6 +68,8 @@ class MenuActivity : AppCompatActivity() {
         val viewCartButton = findViewById<Button>(R.id.buttonViewCarrito)
         viewCartButton.setOnClickListener {
             val intent = Intent(this, CarritoActivity::class.java)
+            intent.putExtra("restaurant_id", restaurantId) // El ID del restaurante
+            intent.putExtra("address", address)            // La dirección del restaurante
             startActivity(intent)
         }
     }

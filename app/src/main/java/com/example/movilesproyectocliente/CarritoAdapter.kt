@@ -19,7 +19,7 @@ class CarritoAdapter(
         val deleteButton: Button = itemView.findViewById(R.id.buttonDeleteCarrito)
 
         fun bind(carritoItem: ApiService.Carrito) {
-            productName.text = "Producto ID: ${carritoItem.id}"
+            productName.text = "Producto ID: ${carritoItem.product_id}"
             productQty.text = "Cantidad: ${carritoItem.qty}"
             productPrice.text = "Precio: ${carritoItem.price}"
 

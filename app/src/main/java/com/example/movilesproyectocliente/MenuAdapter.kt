@@ -62,13 +62,13 @@ class MenuAdapter(private var menuList: List<ApiService.Product>) :
             }
 
             // Buscar si ya existe el producto en el carrito
-            val existingItem = carritoList.find { it.id == product.id }
+            val existingItem = carritoList.find { it.product_id == product.id }
             if (existingItem != null) {
                 // Si ya existe, incrementa la cantidad
                 existingItem.qty += 1
             } else {
                 // Si no existe, crea un nuevo objeto Carrito y añádelo a la lista
-                carritoList.add(ApiService.Carrito(id = product.id, qty = 1, price = product.price))
+                carritoList.add(ApiService.Carrito(product_id = product.id, qty = 1, price = product.price))
             }
 
             // Guarda la lista actualizada en SharedPreferences

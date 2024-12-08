@@ -34,6 +34,7 @@ class TokenActivity : AppCompatActivity() {
             // Acción al hacer clic en un restaurante
             val intent = Intent(this, MenuActivity::class.java)
             intent.putExtra("restaurantId", restaurant.id) // Pasamos el ID del restaurante a la nueva actividad
+            intent.putExtra("address", restaurant.address)
             startActivity(intent)
         }
         recyclerView.adapter = restaurantAdapter

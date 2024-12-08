@@ -48,11 +48,18 @@ interface ApiService {
     )
 
     data class Carrito(
-        val id: Int,
+        val product_id: Int,
         var qty: Int,
         val price:String
     )
-
+    data class OrderRequest(
+        val restaurant_id: Int,
+        val total: Int,
+        val address: String,
+        val latitude: String,
+        val longitude: String,
+        val details: List<Carrito>
+    )
     @POST("users/login")
     fun login(@Body request: LoginRequest): Call<LoginResponse>
 
@@ -60,10 +67,18 @@ interface ApiService {
     fun register(@Body request: RegisterRequest): Call<Unit>
 
     @GET("restaurants")
-    fun getRestaurants(@Header("Authorization") authorization: String): Call<List<RestaurantDetails>>
+    fun getRestaurants(@Header("Authorization") authorization: String
+    ): Call<List<RestaurantDetails>>
 
     @GET("restaurants/{id}")
-    fun getRestaurantDetails(@Header("Authorization") authorization: String, @Path("id") restaurantId: Int
+    fun getRestaurantDetails(
+        @Header("Authorization") authorization: String,
+        @Path("id") restaurantId: Int
     ): Call<RestaurantDetailWithMenu>
 
+    @POST("orders")
+    fun createOrder(
+        @Header("Authorization") authorization: String,
+        @Body orderRequest: OrderRequest
+    ): Call<Void>
 }
