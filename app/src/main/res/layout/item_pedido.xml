@@ -1,0 +1,50 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/txtPedidoId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID Pedido"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtRestauranteId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID Restaurante"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/txtDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dirección"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/txtTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/txtFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/txtDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalles"
+        android:textSize="14sp" />
+</LinearLayout>

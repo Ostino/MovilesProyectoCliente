@@ -2,6 +2,7 @@ package com.example.movilesproyectocliente
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -55,6 +56,12 @@ class TokenActivity : AppCompatActivity() {
         } ?: run {
             Toast.makeText(this, "Token no disponible", Toast.LENGTH_SHORT).show()
         }
+        val btnVerPedidos = findViewById<Button>(R.id.btnVerPedidos)
+        btnVerPedidos.setOnClickListener {
+            val intent = Intent(this, PedidoActivity::class.java)
+            startActivity(intent)
+        }
+
     }
     override fun onResume() {
         super.onResume()

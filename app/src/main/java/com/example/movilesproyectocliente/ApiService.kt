@@ -60,6 +60,28 @@ interface ApiService {
         val longitude: String,
         val details: List<Carrito>
     )
+
+    data class Pedido(
+        val id: Int,
+        val user_id: Int,
+        val restaurant_id: Int,
+        val total: String,
+        val latitude: String,
+        val longitude: String,
+        val address: String,
+        val driver_id: Int?,
+        val status: String,
+        val created_at: String,
+        val delivery_proof: String,
+        val order_details: List<Detalle> // Asegúrate de que el nombre coincida con la respuesta de la API
+    )
+    data class Detalle(
+        val id: Int,
+        val quantity: Int,
+        val price: String,
+        val product: Product
+    )
+
     @POST("users/login")
     fun login(@Body request: LoginRequest): Call<LoginResponse>
 
@@ -81,4 +103,9 @@ interface ApiService {
         @Header("Authorization") authorization: String,
         @Body orderRequest: OrderRequest
     ): Call<Void>
+
+    @GET("orders")
+    fun getOrders(
+        @Header("Authorization") authorization: String
+    ): Call<List<Pedido>>
 }

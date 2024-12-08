@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MovilesProyectoCliente"
         tools:targetApi="31">
         <activity
+            android:name=".PedidoActivity"
+            android:exported="false" />
+        <activity
             android:name=".CarritoActivity"
             android:exported="false" />
         <activity
