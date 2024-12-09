@@ -1,4 +1,4 @@
-package com.example.movilesproyectocliente
+package com.example.movilesproyectocliente.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.example.movilesproyectocliente.ApiService
+import com.example.movilesproyectocliente.R
+import com.example.movilesproyectocliente.RetrofitClient
+import com.example.movilesproyectocliente.adapters.MenuAdapter
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Call

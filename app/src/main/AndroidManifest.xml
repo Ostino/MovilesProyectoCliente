@@ -15,25 +15,25 @@
         android:theme="@style/Theme.MovilesProyectoCliente"
         tools:targetApi="31">
         <activity
-            android:name=".PedidoActivity"
+            android:name=".Activities.PedidoActivity"
             android:exported="false" />
         <activity
-            android:name=".CarritoActivity"
+            android:name=".Activities.CarritoActivity"
             android:exported="false" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".Activities.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".TokenActivity"
+            android:name=".Activities.TokenActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activities.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

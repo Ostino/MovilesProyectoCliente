@@ -1,10 +1,12 @@
-package com.example.movilesproyectocliente
+package com.example.movilesproyectocliente.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movilesproyectocliente.ApiService
+import com.example.movilesproyectocliente.R
 
 class PedidoAdapter(private val pedidos: List<ApiService.Pedido>) :
     RecyclerView.Adapter<PedidoAdapter.PedidoViewHolder>() {

@@ -1,4 +1,4 @@
-package com.example.movilesproyectocliente
+package com.example.movilesproyectocliente.Activities
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.example.movilesproyectocliente.ApiService
+import com.example.movilesproyectocliente.R
+import com.example.movilesproyectocliente.RetrofitClient
+import com.example.movilesproyectocliente.adapters.CarritoAdapter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import retrofit2.Call

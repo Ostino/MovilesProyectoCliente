@@ -1,4 +1,4 @@
-package com.example.movilesproyectocliente
+package com.example.movilesproyectocliente.adapters
 
 import android.content.Context
 import android.util.Log
@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.movilesproyectocliente.ApiService
+import com.example.movilesproyectocliente.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -59,7 +61,13 @@ class MenuAdapter(private var menuList: List<ApiService.Product>) :
             if (existingItem != null) {
                 existingItem.qty += 1
             } else {
-                carritoList.add(ApiService.Carrito(product_id = product.id, qty = 1, price = product.price))
+                carritoList.add(
+                    ApiService.Carrito(
+                        product_id = product.id,
+                        qty = 1,
+                        price = product.price
+                    )
+                )
             }
             val updatedCarritoJson = gson.toJson(carritoList)
             editor.putString("carrito", updatedCarritoJson)

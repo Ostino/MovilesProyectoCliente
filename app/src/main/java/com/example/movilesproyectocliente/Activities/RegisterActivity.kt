@@ -1,4 +1,4 @@
-package com.example.movilesproyectocliente
+package com.example.movilesproyectocliente.Activities
 
 import android.os.Bundle
 import android.util.Log
@@ -6,6 +6,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.movilesproyectocliente.ApiService
+import com.example.movilesproyectocliente.R
+import com.example.movilesproyectocliente.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

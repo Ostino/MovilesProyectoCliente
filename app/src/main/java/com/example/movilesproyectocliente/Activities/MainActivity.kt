@@ -1,4 +1,4 @@
-package com.example.movilesproyectocliente
+package com.example.movilesproyectocliente.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.example.movilesproyectocliente.R
 
 class MainActivity : AppCompatActivity() {
 

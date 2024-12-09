@@ -1,4 +1,4 @@
-package com.example.movilesproyectocliente
+package com.example.movilesproyectocliente.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.example.movilesproyectocliente.ApiService
+import com.example.movilesproyectocliente.R
+import com.example.movilesproyectocliente.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
