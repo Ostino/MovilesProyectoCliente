@@ -132,12 +132,11 @@ class CarritoActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {
-                        if (response.code() == 201) {  // Pedido exitoso
+                        if (response.code() == 201) {
                             runOnUiThread {
                                 Toast.makeText(this@CarritoActivity, "Pedido realizado con éxito", Toast.LENGTH_SHORT).show()
                             }
 
-                            // Limpiar carrito después del pedido
                             clearCart(carritoList)
                         }
                     } else {
