@@ -73,7 +73,7 @@ interface ApiService {
         val status: String,
         val created_at: String,
         val delivery_proof: String,
-        val order_details: List<Detalle> // Asegúrate de que el nombre coincida con la respuesta de la API
+        val order_details: List<Detalle>
     )
     data class Detalle(
         val id: Int,

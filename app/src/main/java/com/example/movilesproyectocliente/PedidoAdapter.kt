@@ -36,7 +36,6 @@ class PedidoAdapter(private val pedidos: List<ApiService.Pedido>) :
             txtDireccion.text = "Dirección: ${pedido.address}"
             txtRestauranteId.text = "ID Restaurante: ${pedido.restaurant_id}"
 
-            // Manejo de order_details
             val detallesTexto = pedido.order_details.joinToString(separator = "\n") { detalle ->
                 "Producto: ${detalle.product.name}, Cantidad: ${detalle.quantity}, Precio: ${detalle.price} Bs"
             }.ifEmpty { "Sin detalles disponibles" }

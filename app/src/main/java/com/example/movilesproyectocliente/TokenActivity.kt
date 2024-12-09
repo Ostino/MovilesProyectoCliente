@@ -3,12 +3,8 @@ package com.example.movilesproyectocliente
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -26,13 +22,10 @@ class TokenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_token)
-        // Inicializar el RecyclerView y el adaptador
         recyclerView = findViewById(R.id.recyclerViewRestaurants)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Configurar el adaptador con la función onClick
         restaurantAdapter = RestaurantAdapter(emptyList()) { restaurant ->
-            // Acción al hacer clic en un restaurante
             val intent = Intent(this, MenuActivity::class.java)
             intent.putExtra("restaurantId", restaurant.id) // Pasamos el ID del restaurante a la nueva actividad
             intent.putExtra("address", restaurant.address)
@@ -40,7 +33,6 @@ class TokenActivity : AppCompatActivity() {
         }
         recyclerView.adapter = restaurantAdapter
 
-        // Obtener el token
         val sharedPreferences = EncryptedSharedPreferences.create(
             "auth_prefs",
             MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
@@ -50,7 +42,6 @@ class TokenActivity : AppCompatActivity() {
         )
         val token = sharedPreferences.getString("access_token", null)
 
-        // Verificar si tenemos un token y hacer la solicitud
         token?.let {
             getRestaurants(it)
         } ?: run {

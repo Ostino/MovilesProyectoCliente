@@ -3,10 +3,7 @@ package com.example.movilesproyectocliente
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -24,18 +21,15 @@ class PedidoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pedido)
 
-        // Configurar RecyclerView
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewPedidos)
         recyclerView.layoutManager = LinearLayoutManager(this)
         pedidoAdapter = PedidoAdapter(pedidosList)
         recyclerView.adapter = pedidoAdapter
 
-        // Cargar pedidos desde la API
         cargarPedidos()
     }
 
     private fun cargarPedidos() {
-        // Obtener el token de autorización desde EncryptedSharedPreferences
         val sharedPreferences = EncryptedSharedPreferences.create(
             "auth_prefs",
             MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
@@ -50,7 +44,6 @@ class PedidoActivity : AppCompatActivity() {
             return
         }
 
-        // Realizar la solicitud GET /orders
         val apiService = RetrofitClient.getClient().create(ApiService::class.java)
         apiService.getOrders("Bearer $token").enqueue(object : Callback<List<ApiService.Pedido>> {
             override fun onResponse(call: Call<List<ApiService.Pedido>>, response: Response<List<ApiService.Pedido>>) {

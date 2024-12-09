@@ -9,11 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 class RestaurantAdapter(
-    private var restaurantList: List<ApiService.RestaurantDetails>, // Hacemos que sea mutable para permitir actualizaciones
-    private val onClick: (ApiService.RestaurantDetails) -> Unit // Callback para clics
+    private var restaurantList: List<ApiService.RestaurantDetails>,
+    private val onClick: (ApiService.RestaurantDetails) -> Unit
 ) : RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
 
-    // ViewHolder interno que representa un restaurante
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val name: TextView = itemView.findViewById(R.id.restaurant_name)
         private val address: TextView = itemView.findViewById(R.id.restaurant_address)
@@ -23,7 +22,7 @@ class RestaurantAdapter(
             name.text = restaurant.name
             address.text = restaurant.address
             Glide.with(itemView.context).load(restaurant.logo).into(logo)
-            itemView.setOnClickListener { onClick(restaurant) } // Listener del clic
+            itemView.setOnClickListener { onClick(restaurant) }
         }
     }
 
@@ -39,7 +38,6 @@ class RestaurantAdapter(
 
     override fun getItemCount(): Int = restaurantList.size
 
-    // Método para actualizar la lista de restaurantes dinámicamente
     fun updateRestaurants(newRestaurants: List<ApiService.RestaurantDetails>) {
         restaurantList = newRestaurants
         notifyDataSetChanged()

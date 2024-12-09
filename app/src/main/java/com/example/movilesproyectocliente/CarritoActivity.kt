@@ -1,8 +1,6 @@
 package com.example.movilesproyectocliente
 
 import android.app.AlertDialog
-import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -14,22 +12,15 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import org.json.JSONArray
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class CarritoActivity : AppCompatActivity() {
 
     private lateinit var carritoAdapter: CarritoAdapter
     private val gson = Gson()
-    private lateinit var apiService: ApiService
-
-    // Variables para almacenar los datos recibidos
     private var restaurantId: Int = 0
     private var address: String? = null
 
@@ -38,22 +29,17 @@ class CarritoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carrito)
 
-        // Recibir los datos del Intent
         restaurantId = intent.getIntExtra("restaurant_id", 0)
         address = intent.getStringExtra("address")
 
-        // Log para verificar los valores
         Log.d("CarritoActivity", "Restaurant ID: $restaurantId, Address: $address")
 
-        // Inicializar RecyclerView
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewCarrito)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Obtener datos del carrito de SharedPreferences
         val sharedPreferences = getSharedPreferences("carrito_prefs", MODE_PRIVATE)
         val carritoJson = sharedPreferences.getString("carrito", null)
 
-        // Decodificar la lista de carrito
         val carritoList: MutableList<ApiService.Carrito> = try {
             if (carritoJson.isNullOrEmpty()) {
                 mutableListOf()
@@ -69,16 +55,13 @@ class CarritoActivity : AppCompatActivity() {
             Toast.makeText(this, "El carrito está vacío", Toast.LENGTH_SHORT).show()
         }
 
-        // Configurar el adaptador
         carritoAdapter = CarritoAdapter(carritoList) { carrito ->
             eliminarProducto(carrito, carritoList)
         }
         recyclerView.adapter = carritoAdapter
 
-        // Configurar el botón de "Realizar Pedido"
         val btnRealizarPedido = findViewById<Button>(R.id.btnRealizarPedido)
         btnRealizarPedido.setOnClickListener {
-            // Confirmar si el usuario está seguro de realizar el pedido
             AlertDialog.Builder(this)
                 .setTitle("Confirmar Pedido")
                 .setMessage("¿Estás seguro de que deseas realizar el pedido?")
@@ -91,21 +74,17 @@ class CarritoActivity : AppCompatActivity() {
     }
 
     private fun eliminarProducto(carrito: ApiService.Carrito, carritoList: MutableList<ApiService.Carrito>) {
-        // Eliminar producto de la lista
         carritoList.remove(carrito)
 
-        // Actualizar SharedPreferences
         val sharedPreferences = getSharedPreferences("carrito_prefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         val updatedCarritoJson = gson.toJson(carritoList)
         editor.putString("carrito", updatedCarritoJson)
         editor.apply()
 
-        // Actualizar adaptador y mostrar mensaje
         carritoAdapter.notifyDataSetChanged()
         Toast.makeText(this, "Producto eliminado del carrito", Toast.LENGTH_SHORT).show()
 
-        // Log para verificar la lista actualizada
         Log.d("CarritoActivity", "Lista después de eliminar: $carritoList")
     }
 
@@ -169,19 +148,15 @@ class CarritoActivity : AppCompatActivity() {
             })
     }
     private fun clearCart(carritoList: MutableList<ApiService.Carrito>) {
-        // Limpiar lista local
         carritoList.clear()
 
-        // Actualizar SharedPreferences
         val sharedPreferences = getSharedPreferences("carrito_prefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.remove("carrito") // Borra la entrada completa
+        editor.remove("carrito")
         editor.apply()
 
-        // Actualizar el adaptador
         carritoAdapter.notifyDataSetChanged()
 
-        // Verificar si el carrito está vacío
         Toast.makeText(this, "Carrito limpio", Toast.LENGTH_SHORT).show()
     }
 

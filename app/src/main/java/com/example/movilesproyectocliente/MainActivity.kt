@@ -14,14 +14,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Eliminar el token si ya existe
         clearToken()
 
-        // Verificar si el token existe
         if (!isUserLoggedIn()) {
-            // Redirigir al LoginActivity si no hay token
             startActivity(Intent(this, LoginActivity::class.java))
-            finish() // Evita que el usuario vuelva a esta actividad con el botón "Atrás"
+            finish()
             return
         }
 
@@ -34,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Método para verificar si el usuario está autenticado
     private fun isUserLoggedIn(): Boolean {
         val sharedPreferences = EncryptedSharedPreferences.create(
             "auth_prefs",
@@ -47,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         return !token.isNullOrEmpty()
     }
 
-    // Método para eliminar el token si existe
     private fun clearToken() {
         val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
         val sharedPreferences = EncryptedSharedPreferences.create(
