@@ -2,6 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/beige"
     android:padding="16dp">
 
     <ImageView
@@ -57,6 +58,8 @@
         app:layout_constraintTop_toBottomOf="@id/textViewProductPrice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/rojo"
         android:layout_marginTop="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
